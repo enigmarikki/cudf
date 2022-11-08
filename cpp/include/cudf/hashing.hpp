@@ -59,6 +59,7 @@ std::unique_ptr<column> hash(
   table_view const& input,
   hash_id hash_function               = hash_id::HASH_MURMUR3,
   uint32_t seed                       = DEFAULT_HASH_SEED,
+  rmm::cuda_stream_view stream        = cudf::get_default_stream(),
   rmm::mr::device_memory_resource* mr = rmm::mr::get_current_device_resource());
 
 /** @} */  // end of group

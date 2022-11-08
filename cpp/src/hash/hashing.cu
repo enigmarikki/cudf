@@ -71,10 +71,11 @@ std::unique_ptr<column> hash(table_view const& input,
 std::unique_ptr<column> hash(table_view const& input,
                              hash_id hash_function,
                              uint32_t seed,
+                             rmm::cuda_stream_view stream,
                              rmm::mr::device_memory_resource* mr)
 {
   CUDF_FUNC_RANGE();
-  return detail::hash(input, hash_function, seed, cudf::get_default_stream(), mr);
+  return detail::hash(input, hash_function, seed, stream, mr);
 }
 
 }  // namespace cudf
