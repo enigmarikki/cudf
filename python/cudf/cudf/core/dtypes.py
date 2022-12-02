@@ -344,7 +344,7 @@ class ListDtype(_BaseDtype):
             )
             self._typ = pa.list_(element_type)
 
-    @property
+    @cached_property
     def element_type(self) -> Dtype:
         """
         Returns the element type of the ``ListDtype``.
@@ -373,7 +373,7 @@ class ListDtype(_BaseDtype):
         else:
             return cudf.dtype(self._typ.value_type.to_pandas_dtype()).name
 
-    @property
+    @cached_property
     def leaf_type(self):
         """
         Returns the type of the leaf values.
